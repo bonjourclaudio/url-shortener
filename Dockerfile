@@ -1,7 +1,9 @@
 FROM golang:latest
 
+
+RUN rm -rf /go/src/github.com/claudioontheweb
+
 RUN go get -u github.com/golang/dep/cmd/dep \
-&& rm -rf /go/src/github.com/claudioontheweb \
 &&  mkdir /go/src/github.com/claudioontheweb \
 &&  git clone https://github.com/claudioontheweb/url-shortener /go/src/github.com/claudioontheweb/url-shortener
 
