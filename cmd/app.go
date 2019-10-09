@@ -65,7 +65,7 @@ func (a *App) createShortUrlHandler(w http.ResponseWriter, r *http.Request) {
 
 	shortUrl, err := models.CreateShortUrl(a.DB, url)
 	if err != nil {
-		respondWithError(w, http.StatusInternalServerError, err.Error())
+		respondWithError(w, http.StatusUnauthorized, "Invalid URL")
 	}
 
 	respondWithJSON(w, http.StatusOK, shortUrl)
