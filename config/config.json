@@ -1,0 +1,8 @@
+{
+  "BASE_URL": ""
+  "SERVER_PORT": "",
+  "DB_NAME": "",
+  "DB_USERNAME": "",
+  "DB_PASSWORD": "",
+  "MYSQL_PORT": ""
+}
