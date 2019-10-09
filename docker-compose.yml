@@ -1,0 +1,37 @@
+version: '3.3'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      MYSQL_URL: mysql:33061
+    networks:
+      - backend
+
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'urlshortenerdb'
+      MYSQL_USER: 'dev'
+      MYSQL_PASSWORD: 'dev'
+      MYSQL_ROOT_PASSWORD: '1234'
+    ports:
+      - '33061:3306'
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - backend
+
+volumes:
+  my-db:
+networks:
+  backend:

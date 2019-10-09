@@ -16,12 +16,12 @@ type App struct {
 	DB *gorm.DB
 }
 
-func (a *App) Initialize(user,password,dbname string) {
+func (a *App) Initialize(user,password,dbname,host,mysql_port string) {
 
 	fmt.Println("initializing...")
 
 	var err error
-	a.DB, err = gorm.Open("mysql", user + ":" + password + "@tcp(127.0.0.1:3306)/" + dbname + "?charset=utf8&parseTime=True&loc=Local")
+	a.DB, err = gorm.Open("mysql", user + ":" + password + "@tcp(" + host + ":"+ mysql_port +")/" + dbname + "?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
 		log.Fatal(err)
 	}

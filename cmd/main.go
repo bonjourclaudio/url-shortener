@@ -14,9 +14,11 @@ func main() {
 	db_password := viper.GetString("DB_USERNAME")
 	db_name := viper.GetString("DB_NAME")
 	port := viper.GetString("PORT")
+	host := viper.GetString("HOST")
+	mysql_port := viper.GetString("MYSQL_PORT")
 
 	a := App{}
-	a.Initialize(db_username, db_password, db_name)
+	a.Initialize(db_username, db_password, db_name, host, mysql_port)
 
 	defer a.DB.Close()
 

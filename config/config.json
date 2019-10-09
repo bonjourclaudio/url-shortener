@@ -3,5 +3,6 @@
   "PORT": "8080",
   "DB_NAME": "urlshortenerdb",
   "DB_USERNAME": "dev",
-  "DB_PASSWORD": "dev"
+  "DB_PASSWORD": "dev",
+  "MYSQL_PORT": "33061"
 }
