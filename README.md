@@ -30,3 +30,10 @@ URL: http://localhost:8080/
 	"originalUrl": "https://google.com"
 }
 ```
+
+***Response:***
+```
+{
+    "shortUrl": ""
+}
+```
