@@ -60,12 +60,12 @@ func (a *App) createShortUrlHandler(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&url)
 	if err != nil {
-		panic(err)
+		respondWithError(w, http.StatusInternalServerError, "Error occured")
 	}
 
 	shortUrl, err := models.CreateShortUrl(a.DB, url)
 	if err != nil {
-		panic(err)
+		respondWithError(w, http.StatusInternalServerError, err.Error())
 	}
 
 	respondWithJSON(w, http.StatusOK, shortUrl)
