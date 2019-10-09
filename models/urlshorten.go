@@ -2,7 +2,9 @@ package models
 
 import (
 	"errors"
+	"github.com/claudioontheweb/url-shortener/config"
 	"github.com/jinzhu/gorm"
+	"github.com/spf13/viper"
 	"net/url"
 	"github.com/lithammer/shortuuid"
 )
@@ -28,6 +30,8 @@ func GetOriginalUrl(db *gorm.DB, code string) (string, error) {
 
 func CreateShortUrl(db *gorm.DB, urlShorten UrlShorten) (string, error) {
 
+	config.GetConfig()
+
 	_, err := url.ParseRequestURI(urlShorten.OriginalUrl)
 	if err != nil {
 		return "", errors.New("Invalid URL")
@@ -35,7 +39,7 @@ func CreateShortUrl(db *gorm.DB, urlShorten UrlShorten) (string, error) {
 
 	urlShorten.UrlCode = shortuuid.New()
 
-	urlShorten.ShortUrl = "http://localhost:8080/" + urlShorten.UrlCode
+	urlShorten.ShortUrl = viper.GetString("BASE_URL") + urlShorten.UrlCode
 
 	db.Create(&urlShorten)
 

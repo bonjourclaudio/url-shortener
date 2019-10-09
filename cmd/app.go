@@ -16,7 +16,7 @@ type App struct {
 	DB *gorm.DB
 }
 
-func (a *App) Initialize(user,password,dbname,host,mysql_port string) {
+func (a *App) Initialize(user,password,dbname,mysql_port string) {
 
 	fmt.Println("initializing!!!")
 
@@ -32,9 +32,9 @@ func (a *App) Initialize(user,password,dbname,host,mysql_port string) {
 	a.initializeRoutes()
 
 }
-func (a *App) Run(port string) {
+func (a *App) Run(server_port string) {
 	fmt.Println("running...")
-	log.Fatal(http.ListenAndServe(":" + port, a.Router))
+	log.Fatal(http.ListenAndServe(":" + server_port, a.Router))
 }
 
 func (a *App) initializeRoutes() {

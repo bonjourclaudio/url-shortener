@@ -10,18 +10,17 @@ func main() {
 
 	config.GetConfig()
 
-	db_username := "root"
-	db_password := "1234"
+	db_username := viper.GetString("DB_USERNAME")
+	db_password := viper.GetString("DB_PASSWORD")
 	db_name := viper.GetString("DB_NAME")
-	port := viper.GetString("PORT")
-	host := viper.GetString("HOST")
+	server_port := viper.GetString("SERVER_PORT")
 	mysql_port := viper.GetString("MYSQL_PORT")
 
 	a := App{}
-	a.Initialize(db_username, db_password, db_name, host, mysql_port)
+	a.Initialize(db_username, db_password, db_name, mysql_port)
 
 	defer a.DB.Close()
 
-	a.Run(port)
+	a.Run(server_port)
 
 }
