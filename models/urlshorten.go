@@ -39,7 +39,7 @@ func CreateShortUrl(db *gorm.DB, urlShorten UrlShorten) (string, error) {
 
 	urlShorten.UrlCode = shortuuid.New()
 
-	urlShorten.ShortUrl = viper.GetString("BASE_URL") + urlShorten.UrlCode
+	urlShorten.ShortUrl = viper.GetString("BASE_URL") + "/" + urlShorten.UrlCode
 
 	db.Create(&urlShorten)
 
