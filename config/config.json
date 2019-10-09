@@ -4,5 +4,5 @@
   "DB_NAME": "urlshortenerdb",
   "DB_USERNAME": "dev",
   "DB_PASSWORD": "dev",
-  "MYSQL_PORT": "33061"
+  "MYSQL_PORT": "3306"
 }

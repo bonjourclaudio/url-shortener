@@ -23,7 +23,7 @@ services:
       MYSQL_PASSWORD: 'dev'
       MYSQL_ROOT_PASSWORD: '1234'
     ports:
-      - '33061:3306'
+      - '3306:3306'
     volumes:
       - my-db:/var/lib/mysql
     networks:
