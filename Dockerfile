@@ -6,9 +6,9 @@ FROM golang:latest
 # The latest alpine images don't have some tools like (`git` and `bash`).
 # Adding git, bash and openssh to the image
 
-RUN mkdir /go/src/github.com/claudioontheweb
-RUN git clone https://github.com/claudioontheweb/url-shortener /go/src/github.com/claudioontheweb/url-shortener
-RUN go get -u github.com/golang/dep/cmd/dep
+RUN go get -u github.com/golang/dep/cmd/dep \
+&&  mkdir /go/src/github.com/claudioontheweb \
+&&  git clone https://github.com/claudioontheweb/url-shortener /go/src/github.com/claudioontheweb/url-shortener
 
 # Add Maintainer Info
 LABEL maintainer="Claudio Weckherlin <claudio.weckherlin@gmail.com>"
@@ -20,7 +20,7 @@ WORKDIR /go/src/github.com/claudioontheweb/url-shortener
 RUN dep ensure -v
 
 # Build the Go app
-RUN go build cmd/*.go .
+RUN go build cmd/*.go
 
 # Expose port 8080 to the outside world
 EXPOSE 8080

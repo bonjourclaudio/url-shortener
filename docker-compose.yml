@@ -9,14 +9,12 @@ services:
       - "8080:8080"
     restart: unless-stopped
     depends_on:
-      - db
-    environment:
-      MYSQL_URL: mysql:33061
-    networks:
-      - backend
+      - mysql
+    links:
+      - mysql
 
 
-  db:
+  mysql:
     image: mysql:8.0
     restart: always
     environment:
@@ -28,10 +26,6 @@ services:
       - '33061:3306'
     volumes:
       - my-db:/var/lib/mysql
-    networks:
-      - backend
 
 volumes:
   my-db:
-networks:
-  backend:

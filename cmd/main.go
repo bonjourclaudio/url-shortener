@@ -10,8 +10,8 @@ func main() {
 
 	config.GetConfig()
 
-	db_username := viper.GetString("DB_USERNAME")
-	db_password := viper.GetString("DB_USERNAME")
+	db_username := "root"
+	db_password := "1234"
 	db_name := viper.GetString("DB_NAME")
 	port := viper.GetString("PORT")
 	host := viper.GetString("HOST")
