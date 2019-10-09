@@ -10,8 +10,8 @@ services:
     restart: unless-stopped
     depends_on:
       - mysql
-    links:
-      - mysql
+    networks:
+      - overlay
 
 
   mysql:
@@ -26,6 +26,11 @@ services:
       - '33061:3306'
     volumes:
       - my-db:/var/lib/mysql
+    networks:
+      - overlay
 
 volumes:
   my-db:
+
+networks:
+  overlay:
