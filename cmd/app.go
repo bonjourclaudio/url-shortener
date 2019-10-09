@@ -18,12 +18,11 @@ type App struct {
 
 func (a *App) Initialize(user,password,dbname,host,mysql_port string) {
 
-	fmt.Println("initializing...")
+	fmt.Println("initializing!!!")
 
 	var err error
 	a.DB, err = gorm.Open("mysql", user + ":" + password + "@tcp(mysql:"+ mysql_port +")/" + dbname + "?charset=utf8&parseTime=True&loc=Local")
 	if err != nil {
-		fmt.Println("OAOAOA")
 		log.Fatal(err)
 	}
 
