@@ -6,6 +6,7 @@ import (
 	"github.com/claudioontheweb/url-shortener/models"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
+	"github.com/gorilla/handlers"
 	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
@@ -34,7 +35,7 @@ func (a *App) Initialize(user,password,dbname,mysql_port string) {
 }
 func (a *App) Run(server_port string) {
 	fmt.Println("running...")
-	log.Fatal(http.ListenAndServe(":" + server_port, a.Router))
+	log.Fatal(http.ListenAndServe(":" + server_port, handlers.CORS(handlers.AllowedOrigins([]string{"*"}))(a.Router)))
 }
 
 func (a *App) initializeRoutes() {
