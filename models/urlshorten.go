@@ -38,7 +38,7 @@ func CreateShortUrl(db *gorm.DB, urlShorten UrlShorten) (string, error) {
 		return "", errors.New("Invalid URL")
 	}
 
-	n := 5
+	n := 4
 	b := make([]byte, n)
 
 	if _, err := rand.Read(b); err != nil {
