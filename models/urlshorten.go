@@ -1,12 +1,13 @@
 package models
 
 import (
+	"crypto/rand"
 	"errors"
+	"fmt"
 	"github.com/claudioontheweb/url-shortener/config"
 	"github.com/jinzhu/gorm"
 	"github.com/spf13/viper"
 	"net/url"
-	"github.com/lithammer/shortuuid"
 )
 
 type UrlShorten struct {
@@ -37,7 +38,16 @@ func CreateShortUrl(db *gorm.DB, urlShorten UrlShorten) (string, error) {
 		return "", errors.New("Invalid URL")
 	}
 
-	urlShorten.UrlCode = shortuuid.New()
+	n := 5
+	b := make([]byte, n)
+
+	if _, err := rand.Read(b); err != nil {
+		panic(err)
+	}
+
+	s := fmt.Sprintf("%X", b)
+
+	urlShorten.UrlCode = s
 
 	urlShorten.ShortUrl = viper.GetString("BASE_URL") + "/" + urlShorten.UrlCode
 
