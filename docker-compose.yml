@@ -11,7 +11,7 @@ services:
     depends_on:
       - mysql
     networks:
-      - overlay
+      - urlnet
 
 
   mysql:
@@ -27,10 +27,11 @@ services:
     volumes:
       - my-db:/var/lib/mysql
     networks:
-      - overlay
+      - urlnet
 
 volumes:
   my-db:
 
 networks:
-  overlay:
+  urlnet:
+    driver: bridge
