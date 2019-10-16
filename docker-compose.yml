@@ -10,9 +10,6 @@ services:
     restart: always
     depends_on:
       - database
-    networks:
-      - urlnet
-
 
   database:
     image: mysql:8.0
@@ -26,12 +23,6 @@ services:
       - '3306:3306'
     volumes:
       - my-db:/var/lib/mysql
-    networks:
-      - urlnet
-
+      -
 volumes:
   my-db:
-
-networks:
-  urlnet:
-    driver: bridge
