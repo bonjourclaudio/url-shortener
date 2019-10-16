@@ -10,6 +10,7 @@ services:
     restart: always
     depends_on:
       - database
+    network_mode: host
 
   database:
     image: mysql:8.0
@@ -23,6 +24,7 @@ services:
       - '3306:3306'
     volumes:
       - my-db:/var/lib/mysql
+    network_mode: host
 
 volumes:
   my-db:
