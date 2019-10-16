@@ -9,12 +9,12 @@ services:
       - "8080:8080"
     restart: always
     depends_on:
-      - mysql
+      - database
     networks:
       - urlnet
 
 
-  mysql:
+  database:
     image: mysql:8.0
     restart: always
     environment:
