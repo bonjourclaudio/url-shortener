@@ -7,8 +7,6 @@ RUN go get -u github.com/golang/dep/cmd/dep \
 &&  mkdir /go/src/github.com/claudioontheweb \
 &&  git clone https://github.com/claudioontheweb/url-shortener /go/src/github.com/claudioontheweb/url-shortener
 
-LABEL maintainer="Claudio Weckherlin <claudio.weckherlin@gmail.com>"
-
 WORKDIR /go/src/github.com/claudioontheweb/url-shortener
 
 RUN dep ensure -v
